@@ -108,3 +108,8 @@ $_lang['clientconfig.global_values'] = 'Global';
 $_lang['clientconfig.config_for_context'] = 'Configuration for [[+context]]';
 $_lang['clientconfig.categories'] = 'Categories';
 $_lang['clientconfig.process_options'] = 'Process tags in options';
+
+// New 2018-06-13
+$_lang['clientconfig.edit_repeaters'] = 'Edit Repeaters';
+$_lang['clientconfig.add_repeater'] = 'Add Repeater';
+$_lang['clientconfig.update_repeater'] = 'Update Repeater';

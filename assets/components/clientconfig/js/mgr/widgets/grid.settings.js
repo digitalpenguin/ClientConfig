@@ -96,6 +96,10 @@ ClientConfig.grid.Settings = function(config) {
             handler: this.addSetting,
             scope: this
         },'->',{
+            text: _('clientconfig.edit_repeaters'),
+            handler: this.loadRepeatersWindow,
+            scope: this
+        },{
             emptyText: _('clientconfig.filter_on_group'),
             xtype: 'clientconfig-combo-groups',
             id: 'clientconfig-settings-filter-group',
@@ -213,6 +217,19 @@ Ext.extend(ClientConfig.grid.Settings,MODx.grid.Grid,{
             scope: this
         });
         return m;
+    },
+
+    loadRepeatersWindow: function() {
+        var win = MODx.load({
+            xtype: 'clientconfig-window-repeaters',
+            listeners: {
+                success: {fn: function(r) {
+                        this.refresh();
+                    },scope: this},
+                scope: this
+            }
+        });
+        win.show();
     },
 
     filterOnGroup: function() {

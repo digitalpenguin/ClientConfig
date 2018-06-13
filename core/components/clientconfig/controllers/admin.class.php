@@ -31,6 +31,8 @@ class ClientConfigAdminManagerController extends ClientConfigManagerController {
     public function loadCustomCssJs() {
         $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/grid.groups.js');
         $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/grid.settings.js');
+        $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/grid.repeaters.js');
+        $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/window.repeaters.js');
         $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/window.groups.js');
         $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/window.settings.js');
         $this->addJavascript($this->clientconfig->config['jsUrl'].'mgr/widgets/window.import.js');
