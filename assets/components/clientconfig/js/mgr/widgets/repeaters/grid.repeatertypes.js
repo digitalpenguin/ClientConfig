@@ -1,8 +1,8 @@
-ClientConfig.grid.Repeaters = function(config) {
+ClientConfig.grid.RepeaterTypes = function(config) {
     config = config || {};
     Ext.applyIf(config,{
 		url: ClientConfig.config.connectorUrl,
-		id: 'clientconfig-grid-repeaters',
+		id: 'clientconfig-grid-repeatertypes',
 		baseParams: {
             action: 'mgr/repeaters/getlist'
         },
@@ -11,6 +11,7 @@ ClientConfig.grid.Repeaters = function(config) {
         emptyText: _('clientconfig.error.noresults'),
 		fields: [
             {name: 'id', type: 'int'},
+            {name: 'key', type: 'string'},
             {name: 'label', type: 'string'},
             {name: 'description', type: 'string'},
             {name: 'sortorder', type: 'int'},
@@ -47,17 +48,17 @@ ClientConfig.grid.Repeaters = function(config) {
 			width: .1
 		}],
         tbar: [{
-            text: _('clientconfig.add_repeater'),
-            handler: this.addRepeater,
+            text: _('clientconfig.add_repeater_type'),
+            handler: this.addRepeaterType,
             scope: this
         }]
     });
-    ClientConfig.grid.Repeaters.superclass.constructor.call(this,config);
+    ClientConfig.grid.RepeaterTypes.superclass.constructor.call(this,config);
 };
-Ext.extend(ClientConfig.grid.Repeaters,MODx.grid.Grid,{
-    addGroup: function() {
-        /*var win = MODx.load({
-            xtype: 'clientconfig-window-repeater',
+Ext.extend(ClientConfig.grid.RepeaterTypes,MODx.grid.Grid,{
+    addRepeaterType: function() {
+        var win = MODx.load({
+            xtype: 'clientconfig-window-repeatertype',
             listeners: {
                 success: {fn: function(r) {
                     this.refresh();
@@ -65,12 +66,12 @@ Ext.extend(ClientConfig.grid.Repeaters,MODx.grid.Grid,{
                 scope: this
             }
         });
-        win.show();*/
+        win.show();
     },
-    updateRepeater: function() {
-        /*var record = this.menu.record;
+    updateRepeaterType: function() {
+        var record = this.menu.record;
         var win = MODx.load({
-            xtype: 'clientconfig-window-repeater',
+            xtype: 'clientconfig-window-repeatertype',
             listeners: {
                 success: {fn: function(r) {
                     this.refresh();
@@ -80,9 +81,9 @@ Ext.extend(ClientConfig.grid.Repeaters,MODx.grid.Grid,{
             isUpdate: true
         });
         win.setValues(record);
-        win.show();*/
+        win.show();
     },
-    removeRepeater: function() {
+    removeRepeaterType: function() {
         var id = this.menu.record.id;
         MODx.msg.confirm({
             title: _('clientconfig.remove_repeater'),
@@ -104,15 +105,15 @@ Ext.extend(ClientConfig.grid.Repeaters,MODx.grid.Grid,{
         var m = [];
 
         m.push({
-            text: _('clientconfig.update_repeater'),
-            handler: this.updateRepeater,
+            text: _('clientconfig.update_repeater_type'),
+            handler: this.updateRepeaterType,
             scope: this
         },'-',{
-            text: _('clientconfig.remove_repeater'),
-            handler: this.removeRepeater,
+            text: _('clientconfig.remove_repeater_type'),
+            handler: this.removeRepeaterType,
             scope: this
         });
         return m;
     }
 });
-Ext.reg('clientconfig-grid-repeaters',ClientConfig.grid.Repeaters);
+Ext.reg('clientconfig-grid-repeatertypes',ClientConfig.grid.RepeaterTypes);

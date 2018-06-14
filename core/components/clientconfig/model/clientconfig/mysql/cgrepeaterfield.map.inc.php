@@ -1,8 +1,8 @@
 <?php
-$xpdo_meta_map['cgSetting']= array (
+$xpdo_meta_map['cgRepeaterField']= array (
   'package' => 'clientconfig',
   'version' => '1.1',
-  'table' => 'clientconfig_setting',
+  'table' => 'clientconfig_repeater_fields',
   'extends' => 'xPDOSimpleObject',
   'tableMeta' => 
   array (
@@ -10,21 +10,26 @@ $xpdo_meta_map['cgSetting']= array (
   ),
   'fields' => 
   array (
+    'repeater_type_id' => 0,
     'key' => '',
     'label' => '',
     'xtype' => '',
     'description' => '0',
     'is_required' => 0,
     'sortorder' => 0,
-    'value' => '',
-    'default' => '',
-    'group' => 0,
-    'options' => '',
-    'process_options' => 0,
     'source' => 0,
+    'default' => '',
   ),
   'fieldMeta' => 
   array (
+    'repeater_type_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
     'key' => 
     array (
       'dbtype' => 'varchar',
@@ -72,43 +77,6 @@ $xpdo_meta_map['cgSetting']= array (
       'null' => false,
       'default' => 0,
     ),
-    'value' => 
-    array (
-      'dbtype' => 'mediumtext',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'default' => 
-    array (
-      'dbtype' => 'mediumtext',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'group' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '11',
-      'phptype' => 'int',
-      'null' => true,
-      'default' => 0,
-    ),
-    'options' => 
-    array (
-      'dbtype' => 'mediumtext',
-      'phptype' => 'string',
-      'null' => true,
-      'default' => '',
-    ),
-    'process_options' => 
-    array (
-      'dbtype' => 'tinyint',
-      'precision' => '1',
-      'phptype' => 'boolean',
-      'null' => false,
-      'default' => 0,
-    ),
     'source' => 
     array (
       'dbtype' => 'int',
@@ -117,35 +85,23 @@ $xpdo_meta_map['cgSetting']= array (
       'null' => true,
       'default' => 0,
     ),
+    'default' => 
+    array (
+      'dbtype' => 'mediumtext',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
   ),
   'composites' => 
   array (
-    'ContextValues' => 
+    'RepeaterType' => 
     array (
-      'class' => 'cgContextValue',
-      'cardinality' => 'many',
-      'local' => 'id',
-      'foreign' => 'setting',
-      'owner' => 'local',
-    ),
-    'RepeaterInstance' => 
-    array (
-      'class' => 'cgRepeaterInstance',
-      'cardinality' => 'many',
-      'local' => 'id',
-      'foreign' => 'setting_id',
-      'owner' => 'local',
-    ),
-  ),
-  'aggregates' => 
-  array (
-    'Group' => 
-    array (
-      'class' => 'cgGroup',
-      'cardinality' => 'one',
-      'local' => 'group',
+      'local' => 'repeater_type_id',
+      'class' => 'cgRepeaterType',
       'foreign' => 'id',
       'owner' => 'foreign',
+      'cardinality' => 'one',
     ),
   ),
 );

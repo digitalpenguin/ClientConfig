@@ -47,6 +47,10 @@ $objects = array(
     'cgSetting',
     'cgGroup',
     'cgContextValue',
+    'cgRepeaterType',
+    'cgRepeaterField',
+    'cgRepeaterInstance',
+    'cgRepeaterInstanceValue',
 );
 
 foreach ($objects as $object) {

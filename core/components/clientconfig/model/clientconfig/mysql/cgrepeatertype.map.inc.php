@@ -1,8 +1,8 @@
 <?php
-$xpdo_meta_map['cgGroup']= array (
+$xpdo_meta_map['cgRepeaterType']= array (
   'package' => 'clientconfig',
   'version' => '1.1',
-  'table' => 'clientconfig_group',
+  'table' => 'clientconfig_repeater_types',
   'extends' => 'xPDOSimpleObject',
   'tableMeta' => 
   array (
@@ -10,12 +10,21 @@ $xpdo_meta_map['cgGroup']= array (
   ),
   'fields' => 
   array (
+    'key' => '',
     'label' => '',
     'description' => '0',
     'sortorder' => 0,
   ),
   'fieldMeta' => 
   array (
+    'key' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '75',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
     'label' => 
     array (
       'dbtype' => 'varchar',
@@ -40,15 +49,23 @@ $xpdo_meta_map['cgGroup']= array (
       'default' => 0,
     ),
   ),
-  'aggregates' => 
+  'composites' => 
   array (
-    'Settings' => 
+    'Field' => 
     array (
-      'class' => 'cgSetting',
-      'cardinality' => 'many',
       'local' => 'id',
-      'foreign' => 'group',
+      'class' => 'cgRepeaterField',
+      'foreign' => 'repeater_type_id',
       'owner' => 'local',
+      'cardinality' => 'many',
+    ),
+    'RepeaterInstance' => 
+    array (
+      'local' => 'id',
+      'class' => 'cgRepeaterInstance',
+      'foreign' => 'repeater_type_id',
+      'owner' => 'local',
+      'cardinality' => 'many',
     ),
   ),
 );

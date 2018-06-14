@@ -36,17 +36,19 @@
     </object>
 
     <!-- Custom Repeater Type -->
-    <object class="cgRepeater" table="clientconfig_repeaters" extends="xPDOSimpleObject">
+    <object class="cgRepeaterType" table="clientconfig_repeater_types" extends="xPDOSimpleObject">
         <field key="key" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
         <field key="label" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
+        <field key="description" dbtype="text" phptype="string" null="false" default="0" />
+        <field key="sortorder" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
 
-        <composite alias="Field" local="id" class="cgRepeaterField" foreign="repeater_id" owner="local" cardinality="many" />
-        <composite alias="RepeaterInstance" local="id" class="cgRepeaterInstance" foreign="repeater_id" owner="local" cardinality="many" />
+        <composite alias="Field" local="id" class="cgRepeaterField" foreign="repeater_type_id" owner="local" cardinality="many" />
+        <composite alias="RepeaterInstance" local="id" class="cgRepeaterInstance" foreign="repeater_type_id" owner="local" cardinality="many" />
     </object>
 
     <!-- Allows configuration of the fields a repeater contains -->
     <object class="cgRepeaterField" table="clientconfig_repeater_fields" extends="xPDOSimpleObject">
-        <field key="repeater_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="repeater_type_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="key" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
         <field key="label" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
         <field key="xtype" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
@@ -54,18 +56,19 @@
         <field key="is_required" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
         <field key="sortorder" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="source" dbtype="int" precision="11" phptype="int" null="true" default="0" />
+        <field key="default" dbtype="mediumtext" phptype="string" null="false" default="" />
 
-        <composite alias="Repeater" local="repeater_id" class="cgRepeater" foreign="id" owner="foreign" cardinality="one" />
+        <composite alias="RepeaterType" local="repeater_type_id" class="cgRepeaterType" foreign="id" owner="foreign" cardinality="one" />
     </object>
 
     <!-- Many to Many Instance of the repeater. (There could be multiple instance of the same type) -->
     <object class="cgRepeaterInstance" table="clientconfig_repeater_instances" extends="xPDOSimpleObject">
-        <field key="repeater_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="repeater_type_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="setting_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="key" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
 
-        <aggregate alias="Repeater" local="repeater_id" class="cgRepeater" foreign="id" owner="foreign" cardinality="one" />
-        <aggregate alias="Setting" local="repeater_id" class="cgRepeater" foreign="id" owner="foreign" cardinality="one" />
+        <aggregate alias="RepeaterType" local="repeater_type_id" class="cgRepeaterType" foreign="id" owner="foreign" cardinality="one" />
+        <aggregate alias="Setting" local="setting_id" class="cgSetting" foreign="id" owner="foreign" cardinality="one" />
         <composite alias="RepeaterInstanceValue" local="id" class="cgRepeaterInstanceValue" foreign="repeater_instance_id" owner="local" cardinality="many" />
     </object>
 
@@ -74,7 +77,6 @@
         <field key="repeater_instance_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="key" dbtype="varchar" precision="75" phptype="string" null="false" default="" />
         <field key="value" dbtype="mediumtext" phptype="string" null="false" default="" />
-        <field key="default" dbtype="mediumtext" phptype="string" null="false" default="" />
 
         <aggregate alias="RepeaterInstance" local="repeater_instance_id" class="cgRepeaterInstance" foreign="id" owner="foreign" cardinality="one" />
     </object>

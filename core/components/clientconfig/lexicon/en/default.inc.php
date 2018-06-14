@@ -110,6 +110,8 @@ $_lang['clientconfig.categories'] = 'Categories';
 $_lang['clientconfig.process_options'] = 'Process tags in options';
 
 // New 2018-06-13
-$_lang['clientconfig.edit_repeaters'] = 'Edit Repeaters';
-$_lang['clientconfig.add_repeater'] = 'Add Repeater';
-$_lang['clientconfig.update_repeater'] = 'Update Repeater';
+$_lang['clientconfig.edit_repeater_types'] = 'Edit Repeater Types';
+$_lang['clientconfig.add_repeater_type'] = 'Add Repeater Type';
+$_lang['clientconfig.update_repeater_type'] = 'Update Repeater Type';
+$_lang['clientconfig.remove_repeater_type'] = 'Remove Repeater Type';
+$_lang['clientconfig.duplicate_repeater_type'] = 'Duplicate Repeater Type';

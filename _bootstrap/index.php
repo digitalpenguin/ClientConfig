@@ -142,6 +142,10 @@ $objectContainers = array(
     'cgGroup',
     'cgSetting',
     'cgContextValue',
+    'cgRepeaterType',
+    'cgRepeaterField',
+    'cgRepeaterInstance',
+    'cgRepeaterInstanceValue',
 );
 echo "Creating tables...\n";
 $manager = $modx->getManager();

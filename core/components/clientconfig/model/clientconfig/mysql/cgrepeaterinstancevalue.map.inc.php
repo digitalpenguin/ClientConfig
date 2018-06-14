@@ -1,8 +1,8 @@
 <?php
-$xpdo_meta_map['cgContextValue']= array (
+$xpdo_meta_map['cgRepeaterInstanceValue']= array (
   'package' => 'clientconfig',
   'version' => '1.1',
-  'table' => 'clientconfig_context_value',
+  'table' => 'clientconfig_repeater_instance_values',
   'extends' => 'xPDOSimpleObject',
   'tableMeta' => 
   array (
@@ -10,13 +10,13 @@ $xpdo_meta_map['cgContextValue']= array (
   ),
   'fields' => 
   array (
-    'setting' => 0,
-    'context' => 'web',
+    'repeater_instance_id' => 0,
+    'key' => '',
     'value' => '',
   ),
   'fieldMeta' => 
   array (
-    'setting' => 
+    'repeater_instance_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -24,13 +24,13 @@ $xpdo_meta_map['cgContextValue']= array (
       'null' => false,
       'default' => 0,
     ),
-    'context' => 
+    'key' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '75',
       'phptype' => 'string',
       'null' => false,
-      'default' => 'web',
+      'default' => '',
     ),
     'value' => 
     array (
@@ -42,12 +42,12 @@ $xpdo_meta_map['cgContextValue']= array (
   ),
   'aggregates' => 
   array (
-    'Setting' => 
+    'RepeaterInstance' => 
     array (
-      'local' => 'setting',
-      'class' => 'cgSetting',
+      'local' => 'repeater_instance_id',
+      'class' => 'cgRepeaterInstance',
       'foreign' => 'id',
-      'owner' => 'setting',
+      'owner' => 'foreign',
       'cardinality' => 'one',
     ),
   ),

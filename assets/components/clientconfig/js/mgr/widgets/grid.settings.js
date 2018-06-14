@@ -96,8 +96,8 @@ ClientConfig.grid.Settings = function(config) {
             handler: this.addSetting,
             scope: this
         },'->',{
-            text: _('clientconfig.edit_repeaters'),
-            handler: this.loadRepeatersWindow,
+            text: _('clientconfig.edit_repeater_types'),
+            handler: this.loadRepeaterTypesWindow,
             scope: this
         },{
             emptyText: _('clientconfig.filter_on_group'),
@@ -219,9 +219,9 @@ Ext.extend(ClientConfig.grid.Settings,MODx.grid.Grid,{
         return m;
     },
 
-    loadRepeatersWindow: function() {
+    loadRepeaterTypesWindow: function() {
         var win = MODx.load({
-            xtype: 'clientconfig-window-repeaters',
+            xtype: 'clientconfig-window-repeatertypes',
             listeners: {
                 success: {fn: function(r) {
                         this.refresh();
